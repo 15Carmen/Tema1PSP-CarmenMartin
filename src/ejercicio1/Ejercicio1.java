@@ -65,8 +65,12 @@ public class Ejercicio1 {
         try {
             Process p = pb.start();                         //Iniciamos el proceso
             p.waitFor();                                    //Y esperamos a que acabe
-        } catch (IOException | InterruptedException e) {    //Si el proceso falla lanzamos un mensaje de error
-            System.out.println("Error al lanzar el proceso!");
+        } catch (IOException e) {                           //Si el proceso falla lanzamos un mensaje de error
+            System.out.println("Error al lanzar el proceso! Ha habido algun problema de E/S");
+            System.out.println(e.getMessage());
+        } catch (InterruptedException e) {
+            System.out.println("Error! Se ha interrumpido algun proceso");
+            System.out.println(e.getMessage());
         }
     }
 
@@ -83,8 +87,12 @@ public class Ejercicio1 {
         try {
             Process p = pb.start();                         //Iniciamos el proceso
             p.waitFor();                                    //Y esperamos a que acabe
-        } catch (IOException | InterruptedException e) {    //Si el proceso falla lanzamos un mensaje de error
-            System.out.println("Error al lanzar el proceso!");
+        }  catch (IOException e) {                          //Si el proceso falla lanzamos un mensaje de error
+            System.out.println("Error al lanzar el proceso! Ha habido algun problema de E/S");
+            System.out.println(e.getMessage());
+        } catch (InterruptedException e) {
+            System.out.println("Error! Se ha interrumpido algun proceso");
+            System.out.println(e.getMessage());
         }
     }
 
@@ -101,8 +109,12 @@ public class Ejercicio1 {
         try {
             Process p = pb.start();                         //Iniciamos el proceso
             p.waitFor();                                    //Y esperamos a que acabe
-        } catch (IOException | InterruptedException e) {    //Si el proceso falla lanzamos un mensaje de error
-            System.out.println("Error al lanzar el proceso!");
+        } catch (IOException e) {                           //Si el proceso falla lanzamos un mensaje de error
+            System.out.println("Error al lanzar el proceso! Ha habido algun problema de E/S");
+            System.out.println(e.getMessage());
+        } catch (InterruptedException e) {
+            System.out.println("Error! Se ha interrumpido algun proceso");
+            System.out.println(e.getMessage());
         }
     }
 

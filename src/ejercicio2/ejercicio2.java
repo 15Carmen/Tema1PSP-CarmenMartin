@@ -32,8 +32,9 @@ public class ejercicio2 {
                 FICHERO.delete();           //Lo borramos
                 FICHERO.createNewFile();    //Y nos creamos uno nuevo
             }
-        }catch (IOException e){             //Si el metodo falla lanzamos un mensaje de error
-            System.out.print("Se ha procudido un error");
+        }catch (IOException e) {            //Si el método falla lanzamos un mensaje de error
+            System.out.println("Error al lanzar el proceso! Ha habido algun problema de E/S");
+            System.out.println(e.getMessage());
         }
     }
 
@@ -74,8 +75,12 @@ public class ejercicio2 {
             }
 
 
-        } catch (IOException | InterruptedException e) {              //Si el proceso falla lanzamos un mensaje de error
-            System.out.println("Error al lanzar el proceso!");
+        } catch (IOException e) {                                     //Si el proceso falla lanzamos un mensaje de error
+            System.out.println("Error al lanzar el proceso! Ha habido algun problema de E/S");
+            System.out.println(e.getMessage());
+        } catch (InterruptedException e) {
+            System.out.println("Error! Se ha interrumpido algun proceso");
+            System.out.println(e.getMessage());
         }
     }
 }
