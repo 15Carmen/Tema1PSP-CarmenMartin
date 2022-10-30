@@ -39,7 +39,6 @@ public class CrearFichero {
 
         try {
             Process process = processBuilder.start();       //Iniciamos el proceso
-            System.out.println("Fichero creado con exito"); //Imprimimos un mensaje confirmando la creación del fichero
             process.waitFor();                              //Y esperamos a que el proceso acabe
         } catch (IOException e) {                           //Si el proceso falla lanzamos un mensaje de error
             System.out.println("Error! No se ha podido crear el fichero");

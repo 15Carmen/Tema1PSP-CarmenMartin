@@ -36,7 +36,6 @@ public class CrearCarpeta {
 
         try {
             Process process = processBuilder.start();       //Iniciamos el proceso
-            System.out.println("Carpeta creada con exito"); //Imprimimos un mensaje confirmando la creación de la carpeta
             process.waitFor();                              //Y esperamos a que el proceso acabe
         } catch (IOException e) {                           //Si el proceso falla lanzamos un mensaje de error
             System.out.println("Error! No se ha podido crear la carpeta");

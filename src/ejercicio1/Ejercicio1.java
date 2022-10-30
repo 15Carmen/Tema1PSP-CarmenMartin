@@ -29,20 +29,10 @@ public class Ejercicio1 {
         // Todos los procesos son comandos de Windows, por lo que deben comenzar con cmd
 
         switch (opc) {
-
-            case 1:
-                lanzarProceso1();
-                break;
-
-            case 2:
-                lanzarProceso2();
-                break;
-
-            case 3:
-                lanzarProceso3();
-                break;
-            default:
-                System.out.println("La opcion introducida no es correcta");
+            case 1 -> lanzarCrearCarpeta();
+            case 2 -> lanzarCrearFichero();
+            case 3 -> lanzarMostrarDirectorio();
+            default -> System.out.println("La opcion introducida no es valida");
         }
     }
 
@@ -62,42 +52,57 @@ public class Ejercicio1 {
         return opc;
     }
 
-    public static void lanzarProceso1(){
+    //Metodo para lanzar la clase CrearCarpeta
+    public static void lanzarCrearCarpeta(){
+
+        //Declaramos la variable comando donde guardamos la ruta de la clase
         String[] comando = {"java", "src/ejercicio1/CrearCarpeta.java"};
+
+        //Declaramos el ProcessBuilder y le pasamos el comando que acabamos de crear
         ProcessBuilder pb = new ProcessBuilder(comando);
         pb.inheritIO();
 
         try {
-            Process p = pb.start();
-            p.waitFor();
-        } catch (IOException | InterruptedException e) {
-            e.printStackTrace();
+            Process p = pb.start();                         //Iniciamos el proceso
+            p.waitFor();                                    //Y esperamos a que acabe
+        } catch (IOException | InterruptedException e) {    //Si el proceso falla lanzamos un mensaje de error
+            System.out.println("Error al lanzar el proceso!");
         }
     }
 
-    public static void lanzarProceso2(){
+    //Metodo para lanzar la clase CrearFichero
+    public static void lanzarCrearFichero(){
+
+        //Declaramos la variable comando donde guardamos la ruta de la clase
         String[] comando = {"java", "src/ejercicio1/CrearFichero.java"};
+
+        //Declaramos el ProcessBuilder y le pasamos el comando que acabamos de crear
         ProcessBuilder pb = new ProcessBuilder(comando);
         pb.inheritIO();
 
         try {
-            Process p = pb.start();
-            p.waitFor();
-        } catch (IOException | InterruptedException e) {
-            e.printStackTrace();
+            Process p = pb.start();                         //Iniciamos el proceso
+            p.waitFor();                                    //Y esperamos a que acabe
+        } catch (IOException | InterruptedException e) {    //Si el proceso falla lanzamos un mensaje de error
+            System.out.println("Error al lanzar el proceso!");
         }
     }
 
-    public static void lanzarProceso3(){
+    //Metodo para lanzar la clase MostrarDirectorio
+    public static void lanzarMostrarDirectorio(){
+
+        //Declaramos la variable comando donde guardamos la ruta de la clase
         String[] comando = {"java", "src/ejercicio1/MostrarDirectorio.java"};
+
+        //Declaramos el ProcessBuilder y le pasamos el comando que acabamos de crear
         ProcessBuilder pb = new ProcessBuilder(comando);
         pb.inheritIO();
 
         try {
-            Process p = pb.start();
-            p.waitFor();
-        } catch (IOException | InterruptedException e) {
-            e.printStackTrace();
+            Process p = pb.start();                         //Iniciamos el proceso
+            p.waitFor();                                    //Y esperamos a que acabe
+        } catch (IOException | InterruptedException e) {    //Si el proceso falla lanzamos un mensaje de error
+            System.out.println("Error al lanzar el proceso!");
         }
     }
 
