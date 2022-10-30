@@ -1,6 +1,6 @@
 package ejercicio1;
 
-import java.io.File;
+import java.io.IOException;
 import java.util.Scanner;
 
     /*
@@ -12,8 +12,9 @@ public class CrearCarpeta {
     public static void main(String[] args) {
 
         //Declaramos las variables
-        String ruta;
-        String nombreCarpeta;
+        String ruta;            //Variable donde vamos a guardar la ruta introducida por el usuario
+        String nombreCarpeta;   //Variable donde vamos a guardar el nombre de la carpeta introducido por el usuario
+        String[] comando;       //Variable donde vamos a hacer el comando para crear el directorio con los datos introducidos por el usuario
 
         //Declaramos el scanner par poder leer por consola
         Scanner sc = new Scanner(System.in);
@@ -26,15 +27,21 @@ public class CrearCarpeta {
         System.out.println("Introduzca el nombre de la carpeta: ");
         nombreCarpeta = sc.next();
 
-        //Creamos una variable file directorio con los datos introducidos por el usuario
-        File directorio = new File(ruta + "\\" + nombreCarpeta);
+        //Con los datos introducidos por el usuario creamos el comando para crear la carpeta
+        comando= new String[]{"cmd", "/C", "md", ruta+"\\"+nombreCarpeta};
 
-        if (!directorio.exists()) {                                 //Si el directorio no existe
-            if (directorio.mkdirs()) {                              //Si se crea el directorio
-                System.out.println("Directorio creado");            //Imprimimos un mensaje de que se ha creado el directorio con éxito
-            } else {                                                //Si no se crea el directorio
-                System.out.println("Error al crear directorio");    //Imoprimimos un mensaje de error al crear el directorio
-            }
+        //Declaramos un ProcessBuilder y le pasamos el comando que acabamos de hacer
+        ProcessBuilder processBuilder = new ProcessBuilder(comando);
+        processBuilder.inheritIO();
+
+        try {
+            Process process = processBuilder.start();       //Iniciamos el proceso
+            System.out.println("Carpeta creada con exito"); //Imprimimos un mensaje confirmando la creación de la carpeta
+            process.waitFor();                              //Y esperamos a que el proceso acabe
+        } catch (IOException e) {                           //Si el proceso falla lanzamos un mensaje de error
+            System.out.println("Error! No se ha podido crear la carpeta");
+        } catch (InterruptedException e) {
+            System.out.println("Error! Se ha interrumpido el proceso, no se ha podido crear la carpeta");
         }
 
         //Cerramos el scanner
